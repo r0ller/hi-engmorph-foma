@@ -1,0 +1,60 @@
+!!!engdet.lexc!!!
+
+Multichar_Symbols [stem] +Det +Indef
+
+LEXICON Root
+
+Determiner ;
+
+LEXICON Determiner
+
+a Indef;
+ain Det;
+all Det;
+an Indef;
+another Det;
+any Det;
+both Det;
+certain Det;
+each Det;
+either Det;
+else Det;
+enough Det;
+every Det;
+few Det;
+half Det;
+many Det;
+most Det;
+much Det;
+no Det;
+other Det;
+our Det;
+own Det;
+several Det;
+some Det;
+such Det;
+sundry Det;
+that Det;
+the Det;
+these Det;
+this Det;
+those Det;
+umpteen Det;
+various Det;
+what Det;
+whatever Det;
+wheen Det;
+which Det;
+whichever Det;
+whose Det;
+ye Det;
+yond Det;
+yonder Det;
+
+LEXICON Det
+
+[stem]+Det:0 #;
+
+LEXICON Indef
+
+[stem]+Det+Indef:0 #;

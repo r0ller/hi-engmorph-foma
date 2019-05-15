@@ -1,0 +1,60 @@
+!!!engpart.lexc!!!
+
+Multichar_Symbols [stem] +Part
+
+LEXICON Root
+
+Particle ;
+
+LEXICON Particle
+
+aback Part;
+aboard Part;
+about Part;
+above Part;
+abreast Part;
+abroad Part;
+across Part;
+aground Part;
+ahead Part;
+aloft Part;
+along Part;
+apart Part;
+around Part;
+aside Part;
+astray Part;
+at Part;
+away Part;
+back Part;
+behind Part;
+below Part;
+by Part;
+counter Part;
+down Part;
+downstairs Part;
+forth Part;
+forward Part;
+from Part;
+home Part;
+in Part;
+indoors Part;
+inside Part;
+near Part;
+off Part;
+on Part;
+onto Part;
+out Part;
+over Part;
+overboard Part;
+past Part;
+round Part;
+through Part;
+to Part;
+together Part;
+under Part;
+up Part;
+upstairs Part;
+
+LEXICON Part
+
+[stem]+Part:0 #;

@@ -1,0 +1,16 @@
+!!!engvvc.lexc!!!
+
+Multichar_Symbols [stem] +VVC +PRES +Modal
+
+LEXICON Root
+
+VVC ;
+
+LEXICON VVC
+
+could[stem]+VVC+PRES+Modal:could've #;
+may[stem]+VVC+PRES+Modal:may've #;
+might[stem]+VVC+PRES+Modal:might've #;
+must[stem]+VVC+PRES+Modal:must've #;
+should[stem]+VVC+PRES+Modal:should've #;
+would[stem]+VVC+PRES+Modal:would've #;

@@ -1,0 +1,268 @@
+### english.foma ###
+
+# Vowels
+define Vowel [ a | e | i | o | u ];
+# Consonants
+define Cons [ b | c | d | f | g | h | j | k | l | m | n | p | q | r | s | t | v | w | x | y | z ];
+
+define PotentialWord [Cons|Vowel]+;
+
+define ToUpCase a -> A || .#. _ ,,
+                b -> B || .#. _ ,,
+                c -> C || .#. _ ,,
+                d -> D || .#. _ ,,
+                e -> E || .#. _ ,,
+                f -> F || .#. _ ,,
+                g -> G || .#. _ ,,
+                h -> H || .#. _ ,,
+                i -> I || .#. _ ,,
+                j -> J || .#. _ ,,
+                k -> K || .#. _ ,,
+                l -> L || .#. _ ,,
+                m -> M || .#. _ ,,
+                n -> N || .#. _ ,,
+                o -> O || .#. _ ,,
+                p -> P || .#. _ ,,
+                q -> Q || .#. _ ,,
+                r -> R || .#. _ ,,
+                s -> S || .#. _ ,,
+                t -> T || .#. _ ,,
+                u -> U || .#. _ ,,
+                v -> V || .#. _ ,,
+                w -> W || .#. _ ,,
+                x -> X || .#. _ ,,
+                y -> Y || .#. _ ,,
+                z -> Z || .#. _ ;
+
+# Consonant doubling: 1-letter consonant doubled before -er/-est (happier/happiest)
+define AConsonantDoubling b -> b b , c -> c c , d -> d d , f -> f f , g -> g g , h -> h h , j -> j j , k -> k k , l -> l l , m -> m m , n -> n n , p -> p p , q -> q q , r -> r r , s -> s s , t -> t t , v -> v v , x -> x x , z -> z z || _ "^" [ e r | e s t ];
+
+# Consonant doubling: 1-letter consonant doubled before -ing/-ed (beg/begging)
+define VConsonantDoubling b -> b b , c -> c c , d -> d d , f -> f f , g -> g g , h -> h h , j -> j j , k -> k k , l -> l l , m -> m m , n -> n n , p -> p p , q -> q q , r -> r r , s -> s s , t -> t t , v -> v v , x -> x x , z -> z z || _ "^" [ e d | i n g ];
+
+# E deletion: silent e dropped before -ing and -ed (make/making)
+define EDeletion e -> 0 || Cons Vowel _ "^" [ i n g | e d ] ,,  Cons Cons _ "^" [ i n g | e d ] ,,  Vowel Vowel _ "^" [ i n g | e d ] ,,  Vowel Cons _ "^" [ i n g | e d ];
+
+# E insertion e added after -s, -z, -x, -ch, -sh before s (watch/watches)
+define EInsertion [..] -> e || s | z | x | c h | s h _ "^" s ;
+
+# Y replacement: -y changes to -ie before -s, -i before -ed (try/tries) 
+#define YReplacement y -> i e || _ "^" s ; 
+define YReplacement y -> i e || _ "^" s    ,, 
+                    y -> i   || _ "^" [ e d | e r | e s t ] ;
+
+define YthReplacement y -> i e || _ "^" t h ;
+
+# K insertion: verbs ending with vowel + -c add -k (panic/panicked)
+define KInsertion [..] -> k || Vowel c _ "^" [e d | i n g];
+
+# Cleanup: remove morpheme boundaries
+define Cleanup "^" -> 0;
+
+def AddTag [..] -> "+swVowel+" || .#. _ Vowel ?* .#. .o. 
+           [..] -> "+swConsonant+" || .#. _ Cons ?* .#. ;
+
+read lexc engnoun.lexc
+substitute defined PotentialWord for "[Guess]"
+define LexiconN
+
+define GrammarN LexiconN          .o.
+                EInsertion        .o. 
+                YReplacement      .o. 
+                Cleanup;
+
+define GrammarNup LexiconN        .o.
+                ToUpCase          .o.
+                EInsertion        .o. 
+                YReplacement      .o. 
+                Cleanup;
+
+read lexc engadj.lexc
+define LexiconA
+
+define GrammarA LexiconA          .o. 
+                YReplacement      .o. 
+                Cleanup;
+
+define GrammarAup LexiconA        .o. 
+                ToUpCase          .o. 
+                YReplacement      .o. 
+                Cleanup;
+
+read lexc engadj_cd.lexc
+define LexiconAcd
+
+define GrammarAcd LexiconAcd       .o. 
+                AConsonantDoubling  .o. 
+                YReplacement       .o. 
+                Cleanup;
+
+define GrammarAcdup LexiconAcd    .o. 
+                ToUpCase          .o. 
+                AConsonantDoubling .o. 
+                YReplacement      .o. 
+                Cleanup;
+
+read lexc engadv.lexc
+define LexiconAdv
+
+define GrammarAdv LexiconAdv      .o. 
+                YReplacement      .o. 
+                Cleanup;
+
+define GrammarAdvup LexiconAdv    .o. 
+                ToUpCase          .o. 
+                YReplacement      .o. 
+                Cleanup;
+
+read lexc engprep.lexc
+define LexiconPrep
+
+define GrammarPrep LexiconPrep    .o. 
+                Cleanup;
+
+define GrammarPrepup LexiconPrep  .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engpart.lexc
+define LexiconPart
+
+define GrammarPart LexiconPart    .o. 
+                Cleanup;
+
+define GrammarPartup LexiconPart  .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engpron.lexc
+define LexiconPron
+
+define GrammarPron LexiconPron    .o. 
+                Cleanup;
+
+define GrammarPronup LexiconPron  .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engdet.lexc
+define LexiconDet
+
+define GrammarDet LexiconDet      .o. 
+                Cleanup;
+
+define GrammarDetup LexiconDet    .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc enginject.lexc
+define LexiconInject
+
+define GrammarInject LexiconInject      .o. 
+                Cleanup;
+
+define GrammarInjectup LexiconInject    .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engconj.lexc
+define LexiconConj
+
+define GrammarConj LexiconConj      .o. 
+                Cleanup;
+
+define GrammarConjup LexiconConj    .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engnvc.lexc
+define LexiconNVC
+
+define GrammarNVC LexiconNVC      .o. 
+                Cleanup;
+
+define GrammarNVCup LexiconNVC    .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engvvc.lexc
+define LexiconVVC
+
+define GrammarVVC LexiconVVC      .o. 
+                Cleanup;
+
+define GrammarVVCup LexiconVVC    .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engcomp.lexc
+define LexiconComp
+
+define GrammarComp LexiconComp      .o. 
+                Cleanup;
+
+define GrammarCompup LexiconComp    .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engpunct.lexc
+define LexiconPunct
+
+define GrammarPunct LexiconPunct      .o. 
+                Cleanup;
+
+define GrammarPunctup LexiconPunct    .o. 
+                ToUpCase          .o. 
+                Cleanup;
+
+read lexc engverb_cd.lexc
+define LexiconVcd
+
+define GrammarVcd LexiconVcd     .o. 
+               VConsonantDoubling .o. 
+               EDeletion         .o. 
+               EInsertion        .o. 
+               YReplacement      .o. 
+               KInsertion        .o. 
+               Cleanup;
+
+define GrammarVcdup LexiconVcd   .o. 
+               ToUpCase          .o. 
+               VConsonantDoubling .o. 
+               EDeletion         .o. 
+               EInsertion        .o. 
+               YReplacement      .o. 
+               KInsertion        .o. 
+               Cleanup;
+
+read lexc engverb.lexc
+define LexiconV
+
+define GrammarV LexiconV         .o. 
+               EDeletion         .o. 
+               EInsertion        .o. 
+               YReplacement      .o. 
+               KInsertion        .o. 
+               Cleanup;
+
+define GrammarVup LexiconV       .o. 
+               ToUpCase          .o. 
+               EDeletion         .o. 
+               EInsertion        .o. 
+               YReplacement      .o. 
+               KInsertion        .o. 
+               Cleanup;
+
+read lexc engnum.lexc
+define	LexiconNum;
+
+define GrammarNum LexiconNum     .o.
+				  YthReplacement .o.
+				  Cleanup;
+
+define GrammarNumup LexiconNum     .o.
+					ToUpCase       .o.
+					YthReplacement .o.
+					Cleanup;
+
+regex [GrammarN.i .o. AddTag].i | [GrammarNup.i .o. AddTag].i | GrammarAcd | GrammarAcdup | GrammarA | GrammarAup | GrammarAdv | GrammarAdvup | GrammarPrep | GrammarPrepup | GrammarPart | GrammarPartup | GrammarPron | GrammarPronup | GrammarDet | GrammarDetup | GrammarInject | GrammarInjectup | GrammarConj | GrammarConjup | GrammarNVC | GrammarNVCup | GrammarVVC | GrammarVVCup | GrammarComp | GrammarCompup | GrammarPunct | GrammarPunctup | GrammarVcd | GrammarVcdup | GrammarV | GrammarVup | GrammarNum | GrammarNumup;

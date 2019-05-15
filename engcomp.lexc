@@ -1,0 +1,18 @@
+!!!engcomp.lexc!!!
+
+Multichar_Symbols [stem] +Comp
+
+LEXICON Root
+
+Complementizer ;
+
+LEXICON Complementizer
+
+for Comp;
+if Comp;
+that Comp;
+whether Comp;
+
+LEXICON Comp
+
+[stem]+Comp:0 #;

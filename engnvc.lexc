@@ -1,0 +1,58 @@
+!!!engnvc.lexc!!!
+
+Multichar_Symbols [stem] +NVC +1sg +2nd +3sg +1pl +3pl +PRES +PAST +wh +neut +masc +fem
+
+LEXICON Root
+
+NVC ;
+
+LEXICON NVC
+
+I[stem]+NVC+1pl+PRES:I've #;
+I[stem]+NVC+1sg+PRES:I'd #;
+I[stem]+NVC+1sg+PAST:I'd #;
+I[stem]+NVC+1sg+PRES:I'm #;
+I[stem]+NVC+1sg+PRES:I'll #;
+he[stem]+NVC+3sg+PRES+masc:he'll #;
+he[stem]+NVC+3sg+PRES+masc:he'd #;
+he[stem]+NVC+3sg+PAST+masc:he'd #;
+he[stem]+NVC+3sg+PRES:he's #;
+here[stem]+NVC+3sg+PRES:here's #;
+how[stem]+NVC+3sg+PRES+wh:how's #;
+it[stem]+NVC+3sg+PRES+neut:it'll #;
+it[stem]+NVC+3sg+PRES:it's #;
+she[stem]+NVC+3sg+PRES+fem:she'd #;
+she[stem]+NVC+3sg+PAST+fem:she'd #;
+she[stem]+NVC+3sg+PRES+fem:she's #;
+she[stem]+NVC+3sg+PRES+fem:she'll #;
+that[stem]+NVC+3sg+PRES:that'd #;
+that[stem]+NVC+3sg+PAST:that'd #;
+that[stem]+NVC+3sg+PRES:that's #;
+that[stem]+NVC+3sg+PRES:that'll #;
+there[stem]+NVC+3sg+PRES:there's #;
+there[stem]+NVC+3pl+PRES:there're #;
+they[stem]+NVC+3pl+PRES:they'd #;
+they[stem]+NVC+3pl+PAST:they'd #;
+they[stem]+NVC+3pl+PRES:they've #;
+they[stem]+NVC+3pl+PRES:they'll #;
+they[stem]+NVC+3pl+PRES:they're #;
+we[stem]+NVC+1pl+PRES:we're #;
+we[stem]+NVC+1pl+PRES:we'd #;
+we[stem]+NVC+1pl+PAST:we'd #;
+we[stem]+NVC+1pl+PRES:we'll #;
+we[stem]+NVC+1pl+PRES:we've #;
+what[stem]+NVC+3sg+PRES+wh:what'll #;
+what[stem]+NVC+3sg+PRES+wh:what's #;
+when[stem]+NVC+3sg+PRES+wh:when's #;
+where[stem]+NVC+3sg+PRES+wh:where's #;
+who[stem]+NVC+3sg+PRES+wh:who'd #;
+who[stem]+NVC+3sg+PAST+wh:who'd #;
+who[stem]+NVC+3sg+PRES+wh:who's #;
+who[stem]+NVC+3sg+PRES+wh:who'll #;
+who[stem]+NVC+3pl+PRES+wh:who're #;
+why[stem]+NVC+3sg+PRES+wh:why's #;
+you[stem]+NVC+2nd+PRES:you'll #;
+you[stem]+NVC+2nd+PRES:you're #;
+you[stem]+NVC+2nd+PRES:you've #;
+you[stem]+NVC+2nd+PRES:you'd #;
+you[stem]+NVC+2nd+PAST:you'd #;

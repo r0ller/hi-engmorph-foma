@@ -1,0 +1,224 @@
+select distinct feature from morphology where feature_nr=1;
+V
+N
+A
+Adv
+PropN
+Prep
+Part
+Pron
+Det
+I
+Conj
+'d -> had, would
+'ll -> will, shall
+'ve
+'s -> was, is, has and the posessive 's
+'re -> were, are
+Punct
+Comp
+would
+will
+'m
+G
+was
+
+sql list:
+'V','N','A','Adv','PropN','Prep','Part','Pron','Det','I','Conj','Punct','Comp','G'
+
+after adjustment, the complete list is (description is taken from the documentation of XTAG):
+V		Verb
+N		Noun
+A		Adjective
+Adv		Adverb
+PropN	Proper Noun -ignore for now
+Prep	Preposition
+Part	Verb Particle
+Pron	Pronoun
+Det		Determiner
+I		Interjection
+Conj	Conjunction
+NVC		Noun/Verb Contraction
+VVC		Verb/Verb Contraction -> may've, might've, etc.
+Punct	Punctuation
+Comp	Complementizer
+G		->only the word "yours" and the genitive "'s" appears in the db with this at feature_nr=1
+		so probably a mistake as 'yours' also appears correctly as pronoun with the GEN feature together 
+
+note:
+-proper names, pronouns (including it, that, there) and wh questioning words are present with some clitics (') as well like "who'd"
+-nouns in engmorph.db are present with their (term)'s (3sg GEN) and (term)s'+(term)s's (3pl GEN) forms as well just
+like in case of their nominative 3sg (term) and 3pl (term)s forms
+-verbs are present in engmorph.db with their simple past (-ed) forms
+-verbs are present in engmorph.db with their gerund (-ing) forms
+-adjectives are present in engmorph.db with their comparative (-er) and superlative (-est) forms
+-adverbs formed from adjectives are alse present with -ly ending:
+https://www.ef.com/wwen/english-resources/english-grammar/forming-adverbs-adjectives/
+Adverbs cannot always be formed from adjectives: fast as adjective+ly does not yield fastly as adverb
+!!!Put adverbs ending in -ly as they are to the lexc file!!!
+-!!!Put adjectives with -ic/-ical endings as well into lexc as there's no consistent rule for them!!! 
+-!!!Watch out for entries with "Punct" feature!!!:
+select * from morphology where feature='Punct';
+-!!!TODO: think over to get rid of entries of two wordforms: -ses and -ses's!!!
+select * from morphology where wordform like '-%' and feature_nr=1;
+-!!!add rule to Vinf to exclude e.g. 'haves'
+
+interesting, about singular aux for plural nouns like 'apples is...':
+https://ell.stackexchange.com/questions/145690/100-apples-are-is-considered-as-a-large-number-of-apples
+
+query narrowing down wordforms:
+select wordform from morphology where wordform not like '%ing' and wordform not like '%ed' and wordform not like '%''%' and wordform not like '%er' and wordform not like '%est' and feature_nr=0;
+
+-to select wordforms with their stems (here for verbs):
+SELECT stems.WORDFORM, stems.GROUP_ID, stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='V') as verbs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=0) as stems on verbs.wordform=stems.wordform and verbs.group_id=stems.group_id;
+-to select wordforms with their distinctive features for their grammatical category (here for verbs):
+SELECT stems.WORDFORM, stems.GROUP_ID, stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='V') as verbs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on verbs.wordform=stems.wordform and verbs.group_id=stems.group_id;
+-to select distinctive features of a grammatical category (here for verbs):
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='V') as verbs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on verbs.wordform=stems.wordform and verbs.group_id=stems.group_id;
+V result:
+3sg
+INF
+PROG
+PAST
+PPART
+2sg
+CONTR
+PRES
+3pl
+NEG
+1sg
+TO
+INDAUX
+PASSIVE
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='V') as verbs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=3) as stems on verbs.wordform=stems.wordform and verbs.group_id=stems.group_id;
+V result:
+PRES
+WK
+STR
+NEG
+pl
+INF
+PAST
+CONTR
+PPART
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='V') as verbs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=4) as stems on verbs.wordform=stems.wordform and verbs.group_id=stems.group_id;
+V result:
+PRES
+NEG
+STR
+PAST
+PPART
+pl
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='V') as verbs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=5) as stems on verbs.wordform=stems.wordform and verbs.group_id=stems.group_id;
+V result:
+PAST
+PRES
+STR
+pl
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='V') as verbs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=6) as stems on verbs.wordform=stems.wordform and verbs.group_id=stems.group_id;
+V result:
+STR
+pl
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='N') as nouns inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on nouns.wordform=stems.wordform and nouns.group_id=stems.group_id;
+N result:
+3sg
+3pl
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='N') as nouns inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=3) as stems on nouns.wordform=stems.wordform and nouns.group_id=stems.group_id;
+N result:
+GEN
+masc
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='N') as nouns inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=4) as stems on nouns.wordform=stems.wordform and nouns.group_id=stems.group_id;
+N result:
+masc
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='A') as adjs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on adjs.wordform=stems.wordform and adjs.group_id=stems.group_id;
+A result:
+SUPER
+COMP
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Adv') as advs inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on advs.wordform=stems.wordform and advs.group_id=stems.group_id;
+Adv result:
+wh
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Prep') as preps inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on preps.wordform=stems.wordform and preps.group_id=stems.group_id;
+Prep result:
+-
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Part') as parts inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on parts.wordform=stems.wordform and parts.group_id=stems.group_id;
+Part result:
+-
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Pron') as prons inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on prons.wordform=stems.wordform and prons.group_id=stems.group_id;
+Pron result: TODO: add these to the lexc!!!
+3sg
+1pl
+2nd
+3pl
+GEN
+2pl
+3rd
+2sg
+1sg
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Pron') as prons inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=3) as stems on prons.wordform=stems.wordform and prons.group_id=stems.group_id;
+Pron result: TODO: add these to the lexc!!!
+nomacc
+acc
+GEN
+NEG
+ref1sg
+refl
+wh
+nom
+masc
+fem
+ref3sg
+ref3pl
+ref1pl
+neut
+ref2nd
+ref2sg
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Pron') as prons inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=4) as stems on prons.wordform=stems.wordform and prons.group_id=stems.group_id;
+Pron result: TODO: add these to the lexc!!!
+NEG
+nomacc
+masc
+fem
+nom
+refl
+reffem
+wh
+refmasc
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Pron') as prons inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=5) as stems on prons.wordform=stems.wordform and prons.group_id=stems.group_id;
+Pron result: TODO: add these to the lexc!!!
+nomacc
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Det') as dets inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=2) as stems on dets.wordform=stems.wordform and dets.group_id=stems.group_id;
+Det result:
+GEN
+wh
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Det') as dets inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=3) as stems on dets.wordform=stems.wordform and dets.group_id=stems.group_id;
+Det result:
+ref3sg
+ref2sg
+wh
+ref3pl
+ref1pl
+ref1sg
+ref2nd
+
+SELECT distinct stems.feature from (SELECT WORDFORM, GROUP_ID FROM MORPHOLOGY WHERE FEATURE_NR=1 AND FEATURE='Det') as dets inner join (SELECT WORDFORM, GROUP_ID, FEATURE FROM MORPHOLOGY WHERE FEATURE_NR=4) as stems on dets.wordform=stems.wordform and dets.group_id=stems.group_id;
+Det result:
+reffem
+refmasc
+

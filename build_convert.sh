@@ -1,0 +1,1 @@
+clang++ -std=c++11 -I/usr/pkg/include -I/home/r0ller/hi/alice -L/usr/pkg/lib -lsqlite3 upenn_morphtxt2db.cpp /home/r0ller/hi/alice/logger.cpp /home/r0ller/hi/alice/sqlite_db.cpp /home/r0ller/hi/alice/query_result.cpp -o upenn_morphtxt2db

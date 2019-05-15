@@ -1,0 +1,24 @@
+!!!engconj.lexc!!!
+
+Multichar_Symbols [stem] +Conj
+
+LEXICON Root
+
+Conjunction ;
+
+LEXICON Conjunction
+
+and Conj;
+andor Conj;
+both Conj;
+but Conj;
+either Conj;
+nor Conj;
+or Conj;
+provided Conj;
+seeing Conj;
+to Conj;
+
+LEXICON Conj
+
+[stem]+Conj:0 #;

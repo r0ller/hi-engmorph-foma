@@ -1,0 +1,86 @@
+!!!enginject.lexc!!!
+
+Multichar_Symbols [stem] +Inject
+
+LEXICON Root
+
+Interjection ;
+
+LEXICON Interjection
+
+Alright Iinf;
+Cheers Iinf;
+O Iinf;
+OK Iinf;
+Shucks Iinf;
+ah Iinf;
+aha Iinf;
+ahem Iinf;
+ahoy Iinf;
+alack Iinf;
+alas Iinf;
+atishoo Iinf;
+attaboy Iinf;
+avast Iinf;
+avaunt Iinf;
+bah Iinf;
+begad Iinf;
+begorra Iinf;
+blimey Iinf;
+bo Iinf;
+boh Iinf;
+bye-bye Iinf;
+cheerio Iinf;
+crikey Iinf;
+cripes Iinf;
+eh Iinf;
+eureka Iinf;
+faugh Iinf;
+fiddle-sticks Iinf;
+fie Iinf;
+gee-up Iinf;
+gosh Iinf;
+ha Iinf;
+heighho Iinf;
+hello Iinf;
+hey Iinf;
+hi Iinf;
+ho Iinf;
+holloa Iinf;
+huh Iinf;
+hullo Iinf;
+humph Iinf;
+hurray Iinf;
+jiminy Iinf;
+lo Iinf;
+lor Iinf;
+lumme Iinf;
+lummy Iinf;
+nope Iinf;
+oh Iinf;
+oho Iinf;
+pah Iinf;
+phew Iinf;
+phooey Iinf;
+pooh Iinf;
+prithee Iinf;
+pshaw Iinf;
+rah Iinf;
+roger Iinf;
+shalom Iinf;
+strewth Iinf;
+struth Iinf;
+ta Iinf;
+ugh Iinf;
+whew Iinf;
+whoa Iinf;
+wotcher Iinf;
+yah Iinf;
+yea Iinf;
+yes Iinf;
+yippee Iinf;
+yo-heave-ho Iinf;
+
+LEXICON Iinf
+
+[stem]+Inject:0 #;

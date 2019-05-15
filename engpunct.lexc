@@ -1,0 +1,24 @@
+!!!engpunct.lexc!!!
+
+Multichar_Symbols [stem] +Punct +Apostrophe +DoubleApostrophe +OpeningBracket +ClosingBracket +Comma +Hyphen +Dash +FullStop +QuestionMark +BackTick +DoubleBackTick +Colon +ExclamationMark +SemiColon 
+
+LEXICON Root
+
+Punctuation ;
+
+LEXICON Punctuation
+
+[stem]+Punct+Apostrophe:' #;
+[stem]+Punct+DoubleApostrophe:'' #;
+[stem]+Punct+OpeningBracket:( #;
+[stem]+Punct+ClosingBracket:) #;
+[stem]+Punct+Comma:, #;
+[stem]+Punct+Hyphen:- #;
+[stem]+Punct+Dash:-- #;
+[stem]+Punct+FullStop:. #;
+[stem]+Punct+QuestionMark:? #;
+[stem]+Punct+BackTick:` #;
+[stem]+Punct+DoubleBackTick:`` #;
+[stem]+Punct+Colon:%: #;
+[stem]+Punct+ExclamationMark:%! #;
+[stem]+Punct+SemiColon:%; #;

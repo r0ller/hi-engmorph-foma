@@ -1,0 +1,46 @@
+!!!engadj_cd.lexc!!!
+
+Multichar_Symbols [stem] +A +COMP +SUPER
+
+LEXICON Root
+
+Adjective ;
+
+LEXICON Adjective
+
+big Ainf;
+brimful Ainf;
+cruel Ainf;
+dim Ainf;
+drab Ainf;
+dun Ainf;
+fat Ainf;
+fit Ainf;
+flat Ainf;
+glad Ainf;
+glib Ainf;
+glum Ainf;
+grim Ainf;
+hip Ainf;
+hot Ainf;
+loyal Ainf;
+mad Ainf;
+net Ainf;
+prim Ainf;
+red Ainf;
+rum Ainf;
+sad Ainf;
+slim Ainf;
+smug Ainf;
+snug Ainf;
+tan Ainf;
+thin Ainf;
+trim Ainf;
+wan Ainf;
+wet Ainf;
+
+LEXICON Ainf
+
+[stem]+A:0 #;
+[stem]+A+COMP:^er #;
+[stem]+A+SUPER:^est #;
