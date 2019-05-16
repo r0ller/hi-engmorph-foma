@@ -13,7 +13,6 @@ LEXICON Root
 NumPref;
 
 LEXICON Num
-zero	NumSuffix;
 one		NumSuffix;
 two		NumSuffix;
 three	NumSuffix;
@@ -23,18 +22,15 @@ six		NumSuffix;
 seven	NumSuffix;
 eight	NumSuffix;
 nine	NumSuffix;
-NumSuffix;
-
-LEXICON NumT
-one		NumSuffix;
-two		NumSuffix;
-three	NumSuffix;
-four	NumSuffix;
-five	NumSuffix;
-six		NumSuffix;
-seven	NumSuffix;
-eight	NumSuffix;
-nine	NumSuffix;
+one[stem]+Num+Ord:first #;
+two[stem]+Num+Ord:second #;
+three[stem]+Num+Ord:third #;
+four[stem]+Num+Ord:fourth #;
+five[stem]+Num+Ord:fifth #;
+six[stem]+Num+Ord:sixth #;
+seven[stem]+Num+Ord:seventh #;
+eight[stem]+Num+Ord:eighth #;
+nine[stem]+Num+Ord:ninth #;
 
 LEXICON Num1
 ten 		Num1Suffix;
@@ -49,60 +45,29 @@ eight:eighteen	Num1Suffix;
 nine:nineteen	Num1Suffix;
 Num1Suffix;
 
-LEXICON Num2
-twenty-		NumSuffix;
-
-LEXICON Num3
-thirty-		NumSuffix;
-
-LEXICON Num4
-fourty-		NumSuffix;
-
-LEXICON Num5
-fifty- 		NumSuffix;
-
-LEXICON Num6
-sixty- 		NumSuffix;
-
-LEXICON Num7
-seventy- 	NumSuffix;
-
-LEXICON Num8
-eighty-		NumSuffix;
-
-LEXICON Num9
-ninety-		NumSuffix;
-
 LEXICON NumPref
-+Npref2n+:twenty- NumT;
-+Npref3n+:thirty- NumT;
-+Npref4n+:fourty- NumT;
-+Npref5n+:fifty- NumT;
-+Npref6n+:sixty- NumT;
-+Npref7n+:seventy- NumT;
-+Npref8n+:eighty- NumT;
-+Npref9n+:ninety- NumT;
+
+zero:zero Num1Suffix;
 Num;
 +Npref1n+:0 Num1;
-+Npref2n+:0 Num2;
-+Npref3n+:0 Num3;
-+Npref4n+:0 Num4;
-+Npref5n+:0 Num5;
-+Npref6n+:0 Num6;
-+Npref7n+:0 Num7;
-+Npref8n+:0 Num8;
-+Npref9n+:0 Num9;
++Npref2n+:twenty- Num;
++Npref3n+:thirty- Num;
++Npref4n+:fourty Num;
++Npref5n+:fifty- Num;
++Npref6n+:sixty- Num;
++Npref7n+:seventy- Num;
++Npref8n+:eighty- Num;
++Npref9n+:ninety- Num;
++Npref2n+twenty:twenty Num1Suffix;
++Npref3n+thirty:thirty Num1Suffix;
++Npref4n+fourty:fourty Num1Suffix;
++Npref5n+fifty:fifty Num1Suffix;
++Npref6n+sixty:sixty Num1Suffix;
++Npref7n+seventy:seventy Num1Suffix;
++Npref8n+eighty:eighty Num1Suffix;
++Npref9n+ninety:ninety Num1Suffix;
 
 Lexicon NumSuffix
-one[stem]+Num+Ord:first #;
-two[stem]+Num+Ord:second #;
-three[stem]+Num+Ord:third #;
-four[stem]+Num+Ord:fourth #;
-five[stem]+Num+Ord:fifth #;
-six[stem]+Num+Ord:sixth #;
-seven[stem]+Num+Ord:seventh #;
-eight[stem]+Num+Ord:eighth #;
-nine[stem]+Num+Ord:ninth #;
 [stem]+Num:0 Nom;
 
 Lexicon Num1Suffix
