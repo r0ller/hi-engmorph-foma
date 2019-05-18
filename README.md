@@ -14,9 +14,9 @@ Some short description:
 -createdb.sql was used the create the empty db files  
 -upenn_morphtxt2db.cpp was used to create the converted_engmorph.db from comment_free_morph_english.txt  
 -adjust_upenn_morphdb.cpp was used to adjust it and get engmorph.db which was finally used onwards  
--the various build*.sh scripts were used to build the programs to convert the relevant info to the corresponding *.lexc files  
+-the various build*.sh scripts were used to build the programs to convert the relevant info from the engmorph.db into the corresponding *.lexc files  
 -english.foma was taken from the [foma](https://fomafst.github.io/morphtut.html) site and enhanced manually
--finally some manual adjustments were applied to the lexc files
--createfst.sh was used to create english.fst in the end
+-finally some manual adjustments were applied to the lexc files  
+-createfst.sh was used to create english.fst in the end  
 
 Note: This is not a 1:1 transformation of the original and is still in development so expect many bugs/mistakes  
