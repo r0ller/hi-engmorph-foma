@@ -6,7 +6,7 @@ Multichar_Symbols [stem] +Num +Npref+
 +Npref9+ +Npref1nn+ +Npref1nnn+
 +Npref1n+ +Npref2n+ +Npref3n+ +Npref4n+
 +Npref5n+ +Npref6n+ +Npref7n+ +Npref8n+
-+Npref9n+ +Nom +Ord
++Npref9n+ +nom +ord
 
 LEXICON Root
 
@@ -22,15 +22,15 @@ six		NumSuffix;
 seven	NumSuffix;
 eight	NumSuffix;
 nine	NumSuffix;
-one[stem]+Num+Ord:first #;
-two[stem]+Num+Ord:second #;
-three[stem]+Num+Ord:third #;
-four[stem]+Num+Ord:fourth #;
-five[stem]+Num+Ord:fifth #;
-six[stem]+Num+Ord:sixth #;
-seven[stem]+Num+Ord:seventh #;
-eight[stem]+Num+Ord:eighth #;
-nine[stem]+Num+Ord:ninth #;
+one[stem]+Num+ord:first #;
+two[stem]+Num+ord:second #;
+three[stem]+Num+ord:third #;
+four[stem]+Num+ord:fourth #;
+five[stem]+Num+ord:fifth #;
+six[stem]+Num+ord:sixth #;
+seven[stem]+Num+ord:seventh #;
+eight[stem]+Num+ord:eighth #;
+nine[stem]+Num+ord:ninth #;
 
 LEXICON Num1
 ten 		Num1Suffix;
@@ -71,12 +71,12 @@ Lexicon NumSuffix
 [stem]+Num:0 Nom;
 
 Lexicon Num1Suffix
-two[stem]+Num+Ord:twelfth #;
+two[stem]+Num+ord:twelfth #;
 [stem]+Num:^th Ord;
 [stem]+Num:0 Nom;
 
 Lexicon Nom
-+Nom:0 #;
++nom:0 #;
 
 Lexicon Ord
-+Ord:0 #;
++ord:0 #;

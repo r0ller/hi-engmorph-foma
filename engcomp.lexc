@@ -1,6 +1,6 @@
 !!!engcomp.lexc!!!
 
-Multichar_Symbols [stem] +Comp
+Multichar_Symbols [stem] +Cmpl
 
 LEXICON Root
 
@@ -15,4 +15,4 @@ whether Comp;
 
 LEXICON Comp
 
-[stem]+Comp:0 #;
+[stem]+Cmpl:0 #;

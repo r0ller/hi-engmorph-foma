@@ -48,7 +48,7 @@ define EInsertion [..] -> e || s | z | x | c h | s h _ "^" s ;
 
 # Y replacement: -y changes to -ie before -s, -i before -ed (try/tries) 
 #define YReplacement y -> i e || _ "^" s ; 
-define YReplacement y -> i e || _ "^" s    ,, 
+define YReplacement y -> i e || Cons _ "^" s    ,, 
                     y -> i   || _ "^" [ e d | e r | e s t ] ;
 
 define YthReplacement y -> i e || _ "^" t h ;

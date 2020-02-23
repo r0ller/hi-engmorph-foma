@@ -1,6 +1,6 @@
 !!!engdet.lexc!!!
 
-Multichar_Symbols [stem] +Det +Indef
+Multichar_Symbols [stem] +Det +Def +Indef +fwConsonant +fwVowel
 
 LEXICON Root
 
@@ -8,10 +8,10 @@ Determiner ;
 
 LEXICON Determiner
 
-a Indef;
+a[stem]+Det+Indef+fwConsonant:a #;
 ain Det;
 all Det;
-an Indef;
+an[stem]+Det+Indef+fwVowel:an #;
 another Det;
 any Det;
 both Det;
@@ -35,7 +35,7 @@ some Det;
 such Det;
 sundry Det;
 that Det;
-the Det;
+the[stem]+Det+Def:the #;
 these Det;
 this Det;
 those Det;
@@ -54,7 +54,3 @@ yonder Det;
 LEXICON Det
 
 [stem]+Det:0 #;
-
-LEXICON Indef
-
-[stem]+Det+Indef:0 #;

@@ -1,14 +1,3 @@
-!!!engnoun.lexc!!!
-
-Multichar_Symbols [stem] [Guess] +N +3sg +3pl +CON +GEN
-
-LEXICON Root
-
-Noun ;
-
-LEXICON Noun
-
-[Guess] Constant;
 A-bomb Ninf;
 A-level Ninf;
 ABC Ninf;
@@ -45693,7 +45682,6 @@ workmanship Ninf;
 workpeople Ninf;
 workpiece Ninf;
 workroom Ninf;
-work Ninf;
 works Ninf;
 workshop Ninf;
 worktable Ninf;
@@ -47792,19 +47780,3 @@ zoon[stem]+N+3pl:zoa #;
 zoosporangium[stem]+N+3pl:zoosporangia #;
 zucchini[stem]+N+3pl:zucchini #;
 zygoma[stem]+N+3pl:zygomata #;
-
-LEXICON Constant
-[stem]+CON:0	#;
-
-LEXICON Ninf
-
-[stem]+N+3sg:0   #;
-[stem]+N+3pl:^s  #;
-[stem]+N+3sg+GEN:^'s  #;
-[stem]+N+3pl+GEN:^s'  #;
-[stem]+N+3pl+GEN:^s's  #;
-
-LEXICON Ninf_NoPl
-
-[stem]+N+3sg:0   #;
-[stem]+N+3sg+GEN:^'s  #;
