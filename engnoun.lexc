@@ -47535,7 +47535,7 @@ sorus[stem]+N+3pl:sori #;
 sovkhoz[stem]+N+3pl:sovkhozy #;
 spaceman[stem]+N+3pl:spacewomen #;
 spearman[stem]+N+3pl:spearmen #;
-speed[stem]+N+3pl:speed-up #;
+speed[stem]+N+3sg:speed #;
 spermatium[stem]+N+3pl:spermatia #;
 spermatogonium[stem]+N+3pl:spermatogonia #;
 spermatozoon[stem]+N+3pl:spermatozoa #;
