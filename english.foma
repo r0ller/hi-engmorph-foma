@@ -4,8 +4,11 @@
 define Vowel [ a | e | i | o | u ];
 # Consonants
 define Cons [ b | c | d | f | g | h | j | k | l | m | n | p | q | r | s | t | v | w | x | y | z ];
+# Decimal Numbers
+define decimals [ \0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ];
 
 define PotentialWord [Cons|Vowel]+;
+define PotentialDecimalNumber [decimals]+;
 
 define ToUpCase a -> A || .#. _ ,,
                 b -> B || .#. _ ,,
@@ -254,7 +257,7 @@ define GrammarVup LexiconV       .o.
                Cleanup;
 
 read lexc engnum.lexc
-define	LexiconNum;
+define	LexiconNum
 
 define GrammarNum LexiconNum     .o.
 				  YthReplacement .o.
@@ -265,4 +268,10 @@ define GrammarNumup LexiconNum     .o.
 					YthReplacement .o.
 					Cleanup;
 
-regex [GrammarN.i .o. AddTag].i | [GrammarNup.i .o. AddTag].i | GrammarAcd | GrammarAcdup | GrammarA | GrammarAup | GrammarAdv | GrammarAdvup | GrammarPrep | GrammarPrepup | GrammarPart | GrammarPartup | GrammarPron | GrammarPronup | GrammarDet | GrammarDetup | GrammarInject | GrammarInjectup | GrammarConj | GrammarConjup | GrammarNVC | GrammarNVCup | GrammarVVC | GrammarVVCup | GrammarComp | GrammarCompup | GrammarPunct | GrammarPunctup | GrammarVcd | GrammarVcdup | GrammarV | GrammarVup | GrammarNum | GrammarNumup;
+read lexc engdecnum.lexc
+substitute defined PotentialDecimalNumber for "[Guess]"
+define	LexiconDecNum
+
+define GrammarDecNum LexiconDecNum;
+
+regex [GrammarN.i .o. AddTag].i | [GrammarNup.i .o. AddTag].i | GrammarAcd | GrammarAcdup | GrammarA | GrammarAup | GrammarAdv | GrammarAdvup | GrammarPrep | GrammarPrepup | GrammarPart | GrammarPartup | GrammarPron | GrammarPronup | GrammarDet | GrammarDetup | GrammarInject | GrammarInjectup | GrammarConj | GrammarConjup | GrammarNVC | GrammarNVCup | GrammarVVC | GrammarVVCup | GrammarComp | GrammarCompup | GrammarPunct | GrammarPunctup | GrammarVcd | GrammarVcdup | GrammarV | GrammarVup | GrammarNum | GrammarNumup | GrammarDecNum;
