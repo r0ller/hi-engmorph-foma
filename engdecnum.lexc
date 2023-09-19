@@ -1,13 +1,13 @@
 !!!engdecnum.lexc!!!
 
-Multichar_Symbols [stem] [Guess] +decNum
+Multichar_Symbols [stem] [GuessNum] +decNum
 
 LEXICON Root
 
 decNum1;
 
 LEXICON decNum1
-[Guess] decNum2;
+[GuessNum] decNum2;
 
 LEXICON decNum2
 [stem]+decNum:0 #;
